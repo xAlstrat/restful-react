@@ -147,7 +147,7 @@ class ContextlessMutate<TData, TError> extends React.Component<
         return composeUrl(base!, "", path || "");
       } else {
         return verb === "DELETE" && typeof body === "string"
-          ? composeUrl(base!, parentPath!, composePathWithBody(path!, body))
+          ? composeUrl(base!, parentPath!, composePathWithBody(path!.endsWith("/") ? path! : path! + "/", body))
           : composeUrl(base!, parentPath!, path!);
       }
     };
